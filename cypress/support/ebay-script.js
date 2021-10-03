@@ -10,8 +10,8 @@ const search = (platformName, fileUrl) => {
         for (const key in games.games) {
                 const game = games.games[key]
                 const filePath = `./output-files/${platformName}/${game}/${date}.csv`;
-                // cy.task('fileExists', filePath).then((exists) => {
-                    // if (!exists) {
+                cy.task('fileExists', filePath).then((exists) => {
+                    if (!exists) {
                         cy.task('log', `CHECKING ${game}`);
                         const fullCriteria = `${platformName} ${game}`;
                         //search
@@ -95,8 +95,8 @@ const search = (platformName, fileUrl) => {
                                 }
                             });
                         });
-                    // }
-                // });  
+                    }
+                });  
         }
             
     });
